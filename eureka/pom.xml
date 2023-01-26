@@ -10,14 +10,12 @@
     </parent>
 
     <artifactId>eureka</artifactId>
-
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+           <groupId>org.springframework.cloud</groupId>
+           <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
-
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
