@@ -12,9 +12,9 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedHeaders(CorsConfiguration.ALL)
-                .allowedMethods(CorsConfiguration.ALL)
-                .allowCredentials(true)
+                .allowedMethods("*")
+                .allowedHeaders("*")
+                .allowCredentials(false)
                 .maxAge(3600); // 1小时内不需要再预检（发OPTIONS请求）
     }
 
