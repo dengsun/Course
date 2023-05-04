@@ -13,7 +13,7 @@ Toast = {
     Swal.fire({
       position: 'top-end',
       icon: 'error',
-      title: 'message',
+      title: message,
       showConfirmButton: false,
       timer: 3000
     })
@@ -23,7 +23,7 @@ Toast = {
     Swal.fire({
       position: 'top-end',
       icon: 'warning',
-      title: 'message',
+      title: message,
       showConfirmButton: false,
       timer: 3000
     })
