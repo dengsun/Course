@@ -38,6 +38,8 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.29</version>
         </dependency>
+
+        <!-- 读xml -->
         <dependency>
             <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
