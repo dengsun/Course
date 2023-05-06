@@ -24,10 +24,10 @@
               <span class="pull-right label label-primary info-label">
                 {{COURSE_LEVEL | optionKV(course.level)}}
               </span>
-              <span class="pull-right label label-grey info-label">
+              <span class="pull-right label label-primary info-label">
                 {{COURSE_CHARGE | optionKV(course.charge)}}
               </span>
-              <span class="pull-right label label-grey info-label">
+              <span class="pull-right label label-primary info-label">
                 {{COURSE_STATUS | optionKV(course.status)}}
               </span>
             </div>
@@ -45,6 +45,9 @@
               <span class="badge badge-info">时长：{{course.time}}</span>
             </p>
             <p>
+              <button v-on:click="toChapter(course)" class="btn btn-white btn-xs btn-info btn-round">
+                大章
+              </button>
               <button v-on:click="edit(course)" class="btn btn-white btn-xs btn-info btn-round">
                 编辑
               </button>
@@ -294,6 +297,15 @@
             }
           })
         });
+      },
+
+      /**
+       * 点击【大章】
+       */
+      toChapter(course) {
+        let _this = this;
+        SessionStorage.set("course",course);
+        _this.$router.push("/business/chapter");
       }
     }
   }
