@@ -1,6 +1,5 @@
 package com.course.business.controller.admin;
 
-import com.course.server.domain.Category;
 import com.course.server.dto.CategoryDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
@@ -21,6 +20,17 @@ public class CategoryController {
     public static final String BUSINESS_NAME = "分类";
     @Resource
     private CategoryService categoryService;
+
+    /**
+     * 列表查询
+     */
+    @PostMapping("/all")
+    public ResponseDto all(){
+        ResponseDto responseDto = new ResponseDto();
+        List<CategoryDto> categoryDtoList = categoryService.all();
+        responseDto.setContent(categoryDtoList);
+        return responseDto;
+    }
 
     /**
      * 列表查询
