@@ -3,7 +3,7 @@ Toast = {
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: '保存成功!',
+      title: message,
       showConfirmButton: false,
       timer: 3000
     })
