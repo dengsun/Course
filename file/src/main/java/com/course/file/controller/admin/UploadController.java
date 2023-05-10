@@ -34,8 +34,13 @@ public class UploadController {
         file.transferTo(dest);
         LOG.info(dest.getAbsolutePath());
 
+//        D:\file\imooc\course\teacher\s7TXvmcY-头像3.jpg
+
 
         ResponseDto responseDto = new ResponseDto();
+        responseDto.setContent("http://127.0.0.1:9000/file/f/teacher/" + key + "-" + fileName);
         return responseDto;
+
+        // http://127.0.0.1:9000/file/f/teacher/0caIR9fD-abcd.jpg
     }
 }
