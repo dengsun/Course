@@ -231,7 +231,7 @@
               Toast.success("删除成功！");
             }
           })
-        });0
+        });
       },
 
       afterUpload(resp){
