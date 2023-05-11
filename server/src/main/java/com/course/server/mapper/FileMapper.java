@@ -2,9 +2,8 @@ package com.course.server.mapper;
 
 import com.course.server.domain.File;
 import com.course.server.domain.FileExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FileMapper {
     long countByExample(FileExample example);
