@@ -164,6 +164,14 @@ create table `teacher` (
   primary key (`id`)
 ) engine=innodb default charset=utf8mb4 comment='讲师';
 
+insert into `teacher` (id, nickname, name, position , motto , intro) values ('周杰伦', '张三丰', '高级项目经理', '放下
+负担奔向新生命', '国内某985院校统计学博士，任职某知名考研辅导机构，负责数学学科的授课。多年钻研数学领域知识，有较好的数学分析，高等代数和统计学的理论基础，擅长建立统计学模型和微分方程动力学模型，擅长R语言和matlab。善于采用平实的语言让复杂的问题简单化。');
+insert into `teacher` (id, nickname, name, position , motto , intro) values ('周华键', '沧海一声笑', '全栈工程师', '致力于Java全栈推广', '国内某985院校统计学博士，任职某知名考研辅导机构，负责数学学科的授课。多年钻研数学领域知识，有较好的数学分析，高等代数和统计学的理论基础，擅长建立统计学模型和微分方程动力学模型，擅长R语言和matlab。善于采用平实的语言让复杂的问题简单化。');
+insert into `teacher` (id, nickname, name, position , motto , intro) values ('谢霆锋', '独孤求败', '高级架构师', '剑在手,问天下是英雄!', '国内某985院校统计学博士，任职某知名考研辅导机构，负责数学学科的授课。多年钻研数学领域知识，有较好的数学分析，高等代数和统计学的理论基础，擅长建立统计学模型和微分方程动力学模型，擅长R语言和matlab。善于采用平实的语言让复杂的问题简单化。');
+insert into `teacher` (id, nickname, name, position , motto , intro) values ('任贤齐', '十八罗汉', '技术总监', '好好学习
+天天向上', '国内某985院校统计学博士，任职某知名考研辅导机构，负责数学学科的授课。多年钻研数学领域知识，有较好的数学分析，高等代数和统计学的理论基础，擅长建立统计学模型和微分方程动力学模型，擅长R语言和matlab。善于采用平实的语言让复杂的问题简单化。');
+
+
 -- 文件
 drop table if exists `file`;
 create table `file` (
