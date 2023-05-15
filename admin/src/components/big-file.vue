@@ -79,7 +79,7 @@
         }
 
         // 文件分片
-        let shardSize = 5 * 1024 * 1024;    //以5MB为一个分片
+        let shardSize = 10 * 1024 * 1024;    //以10MB为一个分片
         let shardIndex = 1;		//分片索引，1表示第1个分片
         let size = file.size;
         let shardTotal = Math.ceil(size / shardSize); //总片数
@@ -95,9 +95,42 @@
           'key': key62
         };
 
-        _this.upload(param);
+        _this.check(param);
       },
 
+      /**
+       * 检查文件状态，是否已上传过？传到第几个分片？
+       */
+      check (param) {
+        let _this = this;
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/file/admin/check/' + param.key).then((response)=>{
+          let resp = response.data;
+          if (resp.success) {
+            let obj = resp.content;
+            if (!obj) {
+              param.shardIndex = 1;
+              console.log("没有找到文件记录，从分片1开始上传");
+              _this.upload(param);
+            // } else if (obj.shardIndex === obj.shardTotal) {
+            //   // 已上传分片 = 分片总数，说明已全部上传完，不需要再上传
+            //   Toast.success("文件极速秒传成功！");
+            //   _this.afterUpload(resp);
+            //   $("#" + _this.inputId + "-input").val("");
+            }  else {
+              param.shardIndex = obj.shardIndex + 1;
+              console.log("找到文件记录，从分片" + param.shardIndex + "开始上传");
+              _this.upload(param);
+            }
+          } else {
+            Toast.warning("文件上传失败");
+            $("#" + _this.inputId + "-input").val("");
+          }
+        })
+      },
+
+      /**
+       * 将分片数据转成base64进行上传
+       */
       upload: function (param) {
         let _this = this;
         let shardIndex = param.shardIndex;
