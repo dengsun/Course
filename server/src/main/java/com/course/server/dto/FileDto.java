@@ -167,6 +167,10 @@ public class FileDto {
         this.shard = shard;
     }
 
+    public String getVod() {
+        return vod;
+    }
+
     public void setVod(String vod) {
         this.vod = vod;
     }
