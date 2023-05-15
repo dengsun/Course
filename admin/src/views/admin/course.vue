@@ -252,7 +252,7 @@ export default {
           oldSort: 0,
           newSort: 0
         },
-        teacher: [],
+        teachers: [],
       }
     },
     mounted: function() {
