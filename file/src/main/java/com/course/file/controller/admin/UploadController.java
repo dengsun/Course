@@ -1,6 +1,5 @@
 package com.course.file.controller.admin;
 
-import com.alibaba.fastjson.JSON;
 import com.course.server.dto.FileDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.enums.FileUseEnum;
@@ -9,7 +8,6 @@ import com.course.server.util.Base64ToMultipartFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -120,6 +118,7 @@ public class UploadController {
         LOG.info("合并分片结束");
 
         System.gc();
+        Thread.sleep(100);
 
         // 删除分片
         LOG.info("删除分片开始");
@@ -136,6 +135,9 @@ public class UploadController {
         LOG.info("检查上传分片开始：{}", key);
         ResponseDto responseDto = new ResponseDto();
         FileDto fileDto = fileService.findByKey(key);
+        if (fileDto != null) {
+            fileDto.setPath(FILE_DOMAIN + fileDto.getPath());
+        }
         responseDto.setContent(fileDto);
         return responseDto;
     }
