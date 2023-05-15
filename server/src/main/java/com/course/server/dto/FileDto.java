@@ -167,6 +167,10 @@ public class FileDto {
         this.shard = shard;
     }
 
+    public void setVod(String vod) {
+        this.vod = vod;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("FileDto{");
@@ -186,5 +190,4 @@ public class FileDto {
         sb.append('}');
         return sb.toString();
     }
-
 }
