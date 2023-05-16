@@ -28,7 +28,7 @@ public class CourseController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto){
+    public ResponseDto list(@RequestBody CoursePageDto pageDto){
         ResponseDto responseDto = new ResponseDto();
         courseService.list(pageDto);
         responseDto.setContent(pageDto);
@@ -61,6 +61,7 @@ public class CourseController {
         courseService.delete(id);
         return responseDto;
     }
+
     /**
      * 查找课程下所有分类
      * @param courseId
@@ -72,6 +73,7 @@ public class CourseController {
         responseDto.setContent(dtoList);
         return responseDto;
     }
+
     @GetMapping("/find-content/{id}")
     public ResponseDto findContent(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();

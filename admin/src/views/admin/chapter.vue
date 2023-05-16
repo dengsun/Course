@@ -113,12 +113,18 @@ export default {
 
   },
   methods: {
+    /**
+     * 点击【新增】
+     */
     add() {
       let _this = this;
       _this.chapter = {};
       $("#form-modal").modal("show");
     },
 
+    /**
+     * 点击【编辑】
+     */
     edit(chapter) {
       let _this = this;
       _this.chapter = $.extend({},chapter);

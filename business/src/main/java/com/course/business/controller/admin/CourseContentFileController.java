@@ -17,6 +17,7 @@ public class CourseContentFileController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CourseContentFileController.class);
     public static final String BUSINESS_NAME = "课程内容文件";
+
     @Resource
     private CourseContentFileService courseContentFileService;
 

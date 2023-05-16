@@ -38,7 +38,6 @@
       uploadFile () {
         let _this = this;
         let formData = new window.FormData();
-
         let file = _this.$refs.file.files[0];
 
         // 判断文件格式

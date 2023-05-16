@@ -62,6 +62,7 @@ public class ServerGenerator {
         FreemarkerUtil.initConfig("controller.ftl");
         FreemarkerUtil.generator(toControllerPath + Domain + "Controller.java",map);
     }
+
     /**
      * 获取所有的Java类型，使用Set去重
      */

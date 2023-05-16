@@ -13,6 +13,7 @@ public class TestService {
 
     @Resource
     private TestMapper testMapper;
+
     public List<Test> list(){
         TestExample testExample = new TestExample();
         testExample.createCriteria().andIdEqualTo( "1");

@@ -39,17 +39,17 @@ public class CourseDto {
     private String image;
 
     /**
-     * 级别|枚举[CourseLevelEnum]：ONE("1", "初级"),TWO("2", "中级"),THREE("3", "高级")
+     * 级别|ONE("1", "初级"),TWO("2", "中级"),THREE("3", "高级")
      */
     private String level;
 
     /**
-     * 收费|枚举[CourseChargeEnum]：CHARGE("C", "收费"),FREE("F", "免费")
+     * 收费|CHARGE("C", "收费"),FREE("F", "免费")
      */
     private String charge;
 
     /**
-     * 状态|枚举[CourseStatusEnum]：PUBLISH("P", "发布"),DRAFT("D", "草稿")
+     * 状态|PUBLISH("P", "发布"),DRAFT("D", "草稿")
      */
     private String status;
 
@@ -76,6 +76,14 @@ public class CourseDto {
     private Date updatedAt;
 
     private List<CategoryDto> categorys;
+
+    private List<ChapterDto> chapters;
+
+    private List<SectionDto> sections;
+
+    private String content;
+
+    private TeacherDto teacher;
 
     public String teacherId;
 
@@ -199,6 +207,38 @@ public class CourseDto {
         this.teacherId = teacherId;
     }
 
+    public List<ChapterDto> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(List<ChapterDto> chapters) {
+        this.chapters = chapters;
+    }
+
+    public List<SectionDto> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<SectionDto> sections) {
+        this.sections = sections;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public TeacherDto getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(TeacherDto teacher) {
+        this.teacher = teacher;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("CourseDto{");
@@ -216,6 +256,10 @@ public class CourseDto {
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);
         sb.append(", categorys=").append(categorys);
+        sb.append(", chapters=").append(chapters);
+        sb.append(", sections=").append(sections);
+        sb.append(", content='略'");
+        sb.append(", teacher=").append(teacher);
         sb.append(", teacherId='").append(teacherId).append('\'');
         sb.append('}');
         return sb.toString();

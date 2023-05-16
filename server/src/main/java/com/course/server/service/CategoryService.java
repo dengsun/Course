@@ -82,6 +82,7 @@ public class CategoryService {
         deleteChildren(id);
         categoryMapper.deleteByPrimaryKey(id);
     }
+
     /**
      * 删除子分类
      * @param id
@@ -95,5 +96,4 @@ public class CategoryService {
             categoryMapper.deleteByExample(example);
         }
     }
-
 }
