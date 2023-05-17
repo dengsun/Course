@@ -76,22 +76,22 @@ public class CourseService {
      * 保存，id有值时更新，无值时新增
      */
     @Transactional
-    public void save(CourseDto courseDto){
-        Course course = CopyUtil.copy(courseDto,Course.class);
-        if(StringUtils.isEmpty(courseDto.getId())) {
+    public void save(CourseDto courseDto) {
+        Course course = CopyUtil.copy(courseDto, Course.class);
+        if (StringUtils.isEmpty(courseDto.getId())) {
             this.insert(course);
         } else {
             this.update(course);
         }
 
-        //批量保存课程分类
-        courseCategoryService.saveBatch(course.getId(),courseDto.getCategorys());
+        // 批量保存课程分类
+        courseCategoryService.saveBatch(course.getId(), courseDto.getCategorys());
     }
 
     /**
      * 新增
      */
-    private void insert(Course course){
+    private void insert(Course course) {
         Date now = new Date();
         course.setCreatedAt(now);
         course.setUpdatedAt(now);
@@ -102,7 +102,7 @@ public class CourseService {
     /**
      * 更新
      */
-    private void update(Course course){
+    private void update(Course course) {
         course.setUpdatedAt(new Date());
         courseMapper.updateByPrimaryKey(course);
     }
@@ -110,7 +110,7 @@ public class CourseService {
     /**
      * 删除
      */
-    public void delete(String id){
+    public void delete(String id) {
         courseMapper.deleteByPrimaryKey(id);
     }
 
@@ -167,36 +167,36 @@ public class CourseService {
         }
     }
 
-        /**
-         * 查找某一课程，供web模块用，只能查已发布的
-         * @param id
-         * @return
-         */
-        public CourseDto findCourse(String id) {
-            Course course = courseMapper.selectByPrimaryKey(id);
-            if (course == null || !CourseStatusEnum.PUBLISH.getCode().equals(course.getStatus())) {
-                return null;
-            }
-            CourseDto courseDto = CopyUtil.copy(course, CourseDto.class);
+    /**
+     * 查找某一课程，供web模块用，只能查已发布的
+     * @param id
+     * @return
+     */
+    public CourseDto findCourse(String id) {
+        Course course = courseMapper.selectByPrimaryKey(id);
+        if (course == null || !CourseStatusEnum.PUBLISH.getCode().equals(course.getStatus())) {
+            return null;
+        }
+        CourseDto courseDto = CopyUtil.copy(course, CourseDto.class);
 
-            // 查询内容
-            CourseContent content = courseContentMapper.selectByPrimaryKey(id);
-            if (content != null) {
-                courseDto.setContent(content.getContent());
-            }
+        // 查询内容
+        CourseContent content = courseContentMapper.selectByPrimaryKey(id);
+        if (content != null) {
+            courseDto.setContent(content.getContent());
+        }
 
-            // 查找讲师信息
-            TeacherDto teacherDto = teacherService.findById(courseDto.getTeacherId());
-            courseDto.setTeacher(teacherDto);
+        // 查找讲师信息
+        TeacherDto teacherDto = teacherService.findById(courseDto.getTeacherId());
+        courseDto.setTeacher(teacherDto);
 
-            // 查找章信息
-            List<ChapterDto> chapterDtoList = chapterService.listByCourse(id);
-            courseDto.setChapters(chapterDtoList);
+        // 查找章信息
+        List<ChapterDto> chapterDtoList = chapterService.listByCourse(id);
+        courseDto.setChapters(chapterDtoList);
 
-            // 查找节信息
-            List<SectionDto> sectionDtoList = sectionService.listByCourse(id);
-            courseDto.setSections(sectionDtoList);
+        // 查找节信息
+        List<SectionDto> sectionDtoList = sectionService.listByCourse(id);
+        courseDto.setSections(sectionDtoList);
 
-            return courseDto;
+        return courseDto;
     }
 }

@@ -43,10 +43,10 @@ public class ServerGenerator {
         List<Field> fieldList = DbUtil.getColumnByTableName(tableName);
         Set<String> typeSet = getJavaTypes(fieldList);
         Map<String, Object> map = new HashMap<>();
-        map.put("Domain",Domain);
-        map.put("domain",domain);
-        map.put("tableNameCn",tableNameCn);
-        map.put("module",module);
+        map.put("Domain", Domain);
+        map.put("domain", domain);
+        map.put("tableNameCn", tableNameCn);
+        map.put("module", module);
         map.put("fieldList", fieldList);
         map.put("typeSet", typeSet);
 
@@ -60,7 +60,7 @@ public class ServerGenerator {
 
         // 生成controller
         FreemarkerUtil.initConfig("controller.ftl");
-        FreemarkerUtil.generator(toControllerPath + Domain + "Controller.java",map);
+        FreemarkerUtil.generator(toControllerPath + Domain + "Controller.java", map);
     }
 
     /**

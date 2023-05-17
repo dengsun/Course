@@ -25,8 +25,8 @@ public class FileService {
     /**
      * 列表查询
      */
-    public void list(PageDto pageDto){
-        PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
+    public void list(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         FileExample fileExample = new FileExample();
         List<File> fileList = fileMapper.selectByExample(fileExample);
         PageInfo<File> pageInfo = new PageInfo<>(fileList);
@@ -38,10 +38,10 @@ public class FileService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(FileDto fileDto){
-        File file = CopyUtil.copy(fileDto,File.class);
+    public void save(FileDto fileDto) {
+        File file = CopyUtil.copy(fileDto, File.class);
         File fileDb = selectByKey(fileDto.getKey());
-        if(fileDb == null) {
+        if (fileDb == null) {
             this.insert(file);
         } else {
             fileDb.setShardIndex(fileDto.getShardIndex());
@@ -52,7 +52,7 @@ public class FileService {
     /**
      * 新增
      */
-    private void insert(File file){
+    private void insert(File file) {
         Date now = new Date();
         file.setCreatedAt(now);
         file.setUpdatedAt(now);
@@ -63,7 +63,7 @@ public class FileService {
     /**
      * 更新
      */
-    private void update(File file){
+    private void update(File file) {
         file.setUpdatedAt(new Date());
         fileMapper.updateByPrimaryKey(file);
     }
@@ -71,7 +71,7 @@ public class FileService {
     /**
      * 删除
      */
-    public void delete(String id){
+    public void delete(String id) {
         fileMapper.deleteByPrimaryKey(id);
     }
 

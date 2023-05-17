@@ -1,8 +1,8 @@
 package com.course.business.controller.admin;
 
-import com.course.server.dto.TeacherDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
+import com.course.server.dto.TeacherDto;
 import com.course.server.service.TeacherService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class TeacherController {
      * 列表查询
      */
     @PostMapping("/all")
-    public ResponseDto all(){
+    public ResponseDto all() {
         ResponseDto responseDto = new ResponseDto();
         List<TeacherDto> teacherDtoList = teacherService.all();
         responseDto.setContent(teacherDtoList);
@@ -37,7 +37,7 @@ public class TeacherController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto){
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         teacherService.list(pageDto);
         responseDto.setContent(pageDto);
@@ -48,7 +48,7 @@ public class TeacherController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody TeacherDto teacherDto){
+    public ResponseDto save(@RequestBody TeacherDto teacherDto) {
         // 保存校验
         ValidatorUtil.require(teacherDto.getName(), "姓名");
         ValidatorUtil.length(teacherDto.getName(), "姓名", 1, 50);
@@ -68,7 +68,7 @@ public class TeacherController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         teacherService.delete(id);
         return responseDto;

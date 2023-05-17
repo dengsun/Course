@@ -24,8 +24,8 @@ public class ChapterService {
     /**
      * 列表查询
      */
-    public void list(ChapterPageDto chapterPageDto){
-        PageHelper.startPage(chapterPageDto.getPage(),chapterPageDto.getSize());
+    public void list(ChapterPageDto chapterPageDto) {
+        PageHelper.startPage(chapterPageDto.getPage(), chapterPageDto.getSize());
         ChapterExample chapterExample = new ChapterExample();
         ChapterExample.Criteria criteria = chapterExample.createCriteria();
         if (!StringUtils.isEmpty(chapterPageDto.getCourseId())) {
@@ -41,9 +41,9 @@ public class ChapterService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(ChapterDto chapterDto){
-        Chapter chapter = CopyUtil.copy(chapterDto,Chapter.class);
-        if(StringUtils.isEmpty(chapterDto.getId())) {
+    public void save(ChapterDto chapterDto) {
+        Chapter chapter = CopyUtil.copy(chapterDto, Chapter.class);
+        if (StringUtils.isEmpty(chapterDto.getId())) {
             this.insert(chapter);
         } else {
             this.update(chapter);
@@ -53,7 +53,7 @@ public class ChapterService {
     /**
      * 新增
      */
-    private void insert(Chapter chapter){
+    private void insert(Chapter chapter) {
         chapter.setId(UuidUtil.getShortUuid());
         chapterMapper.insert(chapter);
     }
@@ -61,14 +61,14 @@ public class ChapterService {
     /**
      * 更新
      */
-    private void update(Chapter chapter){
+    private void update(Chapter chapter) {
         chapterMapper.updateByPrimaryKey(chapter);
     }
 
     /**
      * 删除
      */
-    public void delete(String id){
+    public void delete(String id) {
         chapterMapper.deleteByPrimaryKey(id);
     }
 

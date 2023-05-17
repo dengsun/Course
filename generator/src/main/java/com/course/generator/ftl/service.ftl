@@ -13,11 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 <#list typeSet as type>
     <#if type=='Date'>
-        import java.util.Date;
+import java.util.Date;
     </#if>
 </#list>
 
@@ -30,8 +29,8 @@ public class ${Domain}Service {
     /**
      * 列表查询
      */
-    public void list(PageDto pageDto){
-        PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
+    public void list(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         ${Domain}Example ${domain}Example = new ${Domain}Example();
         <#list fieldList as field>
             <#if field.nameHump=='sort'>
@@ -48,9 +47,9 @@ public class ${Domain}Service {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(${Domain}Dto ${domain}Dto){
-        ${Domain} ${domain} = CopyUtil.copy(${domain}Dto,${Domain}.class);
-        if(StringUtils.isEmpty(${domain}Dto.getId())) {
+    public void save(${Domain}Dto ${domain}Dto) {
+        ${Domain} ${domain} = CopyUtil.copy(${domain}Dto, ${Domain}.class);
+        if (StringUtils.isEmpty(${domain}Dto.getId())) {
             this.insert(${domain});
         } else {
             this.update(${domain});
@@ -60,7 +59,7 @@ public class ${Domain}Service {
     /**
      * 新增
      */
-    private void insert(${Domain} ${domain}){
+    private void insert(${Domain} ${domain}) {
         <#list typeSet as type>
             <#if type=='Date'>
         Date now = new Date();
@@ -81,7 +80,7 @@ public class ${Domain}Service {
     /**
      * 更新
      */
-    private void update(${Domain} ${domain}){
+    private void update(${Domain} ${domain}) {
         <#list fieldList as field>
             <#if field.nameHump=='updatedAt'>
         ${domain}.setUpdatedAt(new Date());
@@ -93,7 +92,7 @@ public class ${Domain}Service {
     /**
      * 删除
      */
-    public void delete(String id){
+    public void delete(String id) {
         ${domain}Mapper.deleteByPrimaryKey(id);
     }
 }

@@ -38,7 +38,7 @@ public class SectionController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody SectionDto sectionDto){
+    public ResponseDto save(@RequestBody SectionDto sectionDto) {
         // 保存校验
         ValidatorUtil.require(sectionDto.getTitle(), "标题");
         ValidatorUtil.length(sectionDto.getTitle(), "标题", 1, 50);
@@ -54,7 +54,7 @@ public class SectionController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         sectionService.delete(id);
         return responseDto;

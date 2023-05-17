@@ -2,8 +2,9 @@ package com.course.server.mapper;
 
 import com.course.server.domain.CourseCategory;
 import com.course.server.domain.CourseCategoryExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CourseCategoryMapper {
     long countByExample(CourseCategoryExample example);

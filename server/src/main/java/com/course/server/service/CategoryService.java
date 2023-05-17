@@ -25,7 +25,7 @@ public class CategoryService {
     /**
      * 列表查询
      */
-    public List<CategoryDto> all(){
+    public List<CategoryDto> all() {
         CategoryExample categoryExample = new CategoryExample();
         categoryExample.setOrderByClause("sort asc");
         List<Category> categoryList = categoryMapper.selectByExample(categoryExample);
@@ -36,8 +36,8 @@ public class CategoryService {
     /**
      * 列表查询
      */
-    public void list(PageDto pageDto){
-        PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
+    public void list(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         CategoryExample categoryExample = new CategoryExample();
         categoryExample.setOrderByClause("sort asc");
         List<Category> categoryList = categoryMapper.selectByExample(categoryExample);
@@ -50,9 +50,9 @@ public class CategoryService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(CategoryDto categoryDto){
-        Category category = CopyUtil.copy(categoryDto,Category.class);
-        if(StringUtils.isEmpty(categoryDto.getId())) {
+    public void save(CategoryDto categoryDto) {
+        Category category = CopyUtil.copy(categoryDto, Category.class);
+        if (StringUtils.isEmpty(categoryDto.getId())) {
             this.insert(category);
         } else {
             this.update(category);
@@ -62,7 +62,7 @@ public class CategoryService {
     /**
      * 新增
      */
-    private void insert(Category category){
+    private void insert(Category category) {
         category.setId(UuidUtil.getShortUuid());
         categoryMapper.insert(category);
     }
@@ -70,7 +70,7 @@ public class CategoryService {
     /**
      * 更新
      */
-    private void update(Category category){
+    private void update(Category category) {
         categoryMapper.updateByPrimaryKey(category);
     }
 
@@ -78,7 +78,7 @@ public class CategoryService {
      * 删除
      */
     @Transactional
-    public void delete(String id){
+    public void delete(String id) {
         deleteChildren(id);
         categoryMapper.deleteByPrimaryKey(id);
     }

@@ -18,6 +18,7 @@ public class CategoryController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
     public static final String BUSINESS_NAME = "分类";
+
     @Resource
     private CategoryService categoryService;
 
@@ -25,7 +26,7 @@ public class CategoryController {
      * 列表查询
      */
     @PostMapping("/all")
-    public ResponseDto all(){
+    public ResponseDto all() {
         ResponseDto responseDto = new ResponseDto();
         List<CategoryDto> categoryDtoList = categoryService.all();
         responseDto.setContent(categoryDtoList);
@@ -36,7 +37,7 @@ public class CategoryController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto){
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         categoryService.list(pageDto);
         responseDto.setContent(pageDto);
@@ -47,7 +48,7 @@ public class CategoryController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody CategoryDto categoryDto){
+    public ResponseDto save(@RequestBody CategoryDto categoryDto) {
         // 保存校验
         ValidatorUtil.require(categoryDto.getParent(), "父id");
         ValidatorUtil.require(categoryDto.getName(), "名称");
@@ -63,7 +64,7 @@ public class CategoryController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         categoryService.delete(id);
         return responseDto;

@@ -85,7 +85,7 @@ public class CourseDto {
 
     private TeacherDto teacher;
 
-    public String teacherId;
+    private String teacherId;
 
     public String getId() {
         return id;
@@ -264,5 +264,4 @@ public class CourseDto {
         sb.append('}');
         return sb.toString();
     }
-
 }

@@ -7,7 +7,7 @@ import java.util.Date;
 public class SectionDto {
 
     /**
-     * id
+     * ID
      */
     private String id;
 
@@ -22,7 +22,7 @@ public class SectionDto {
     private String courseId;
 
     /**
-     * 大章|chapter.id
+     * 章|chapter.id
      */
     private String chapterId;
 

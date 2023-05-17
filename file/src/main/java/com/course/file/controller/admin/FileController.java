@@ -26,7 +26,7 @@ public class FileController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto){
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         fileService.list(pageDto);
         responseDto.setContent(pageDto);

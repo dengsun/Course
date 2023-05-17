@@ -36,9 +36,9 @@ public class CourseContentFileController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody CourseContentFileDto courseContentFileDto){
+    public ResponseDto save(@RequestBody CourseContentFileDto courseContentFileDto) {
         // 保存校验
-        ValidatorUtil.require(courseContentFileDto.getCourseId(), "课程id");
+        ValidatorUtil.require(courseContentFileDto.getCourseId(), "课程ID");
         ValidatorUtil.length(courseContentFileDto.getUrl(), "地址", 1, 100);
         ValidatorUtil.length(courseContentFileDto.getName(), "文件名", 1, 100);
 
@@ -52,7 +52,7 @@ public class CourseContentFileController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         courseContentFileService.delete(id);
         return responseDto;

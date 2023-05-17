@@ -16,11 +16,11 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(value = ValidatorException.class)
     @ResponseBody
-    public ResponseDto validatorExceptionHandler(ValidatorException e){
+    public ResponseDto validatorExceptionHandler(ValidatorException e) {
         ResponseDto responseDto = new ResponseDto();
         responseDto.setSuccess(false);
         LOG.warn(e.getMessage());
-        responseDto.setMessage("请求参数异常!");
+        responseDto.setMessage("请求参数异常！");
         return responseDto;
     }
 

@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.*;
 
 public class VueGenerator {
-    static String MODULE = "file";
+    static String MODULE = "business";
     static String toVuePath = "admin\\src\\views\\admin\\";
     static String generatorConfigPath = "server\\src\\main\\resources\\generator\\generatorConfig.xml";
 
@@ -41,10 +41,10 @@ public class VueGenerator {
         List<Field> fieldList = DbUtil.getColumnByTableName(tableName);
         Set<String> typeSet = getJavaTypes(fieldList);
         Map<String, Object> map = new HashMap<>();
-        map.put("Domain",Domain);
-        map.put("domain",domain);
-        map.put("tableNameCn",tableNameCn);
-        map.put("module",module);
+        map.put("Domain", Domain);
+        map.put("domain", domain);
+        map.put("tableNameCn", tableNameCn);
+        map.put("module", module);
         map.put("fieldList", fieldList);
         map.put("typeSet", typeSet);
 
@@ -52,6 +52,7 @@ public class VueGenerator {
         FreemarkerUtil.initConfig("vue.ftl");
         FreemarkerUtil.generator(toVuePath + domain + ".vue", map);
     }
+
     /**
      * 获取所有的Java类型，使用Set去重
      */

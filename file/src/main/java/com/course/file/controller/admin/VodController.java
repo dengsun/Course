@@ -105,7 +105,6 @@ public class VodController {
         }
 
 
-
         LOG.info("保存文件记录开始");
         fileDto.setPath(path);
         fileDto.setVod(vod);

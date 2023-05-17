@@ -5,7 +5,6 @@ import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +24,7 @@ public class FreemarkerUtil {
         temp = cfg.getTemplate(ftlName);
     }
 
-    public static void generator(String fileName, Map<String,Object> map) throws IOException, TemplateException {
+    public static void generator(String fileName, Map<String, Object> map) throws IOException, TemplateException {
         FileWriter fw = new FileWriter(fileName);
         BufferedWriter bw = new BufferedWriter(fw);
         temp.process(map, bw);

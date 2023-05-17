@@ -2,8 +2,9 @@ package com.course.server.mapper;
 
 import com.course.server.domain.Teacher;
 import com.course.server.domain.TeacherExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TeacherMapper {
     long countByExample(TeacherExample example);

@@ -164,7 +164,7 @@ public class VodUtil {
             // 初始化VOD客户端并获取上传地址和凭证
             DefaultAcsClient vodClient = initVodClient(accessKeyId, accessKeySecret);
             String fileName = "test.mp4";
-            CreateUploadVideoResponse createUploadVideoResponse = createUploadVideo(vodClient,fileName);
+            CreateUploadVideoResponse createUploadVideoResponse = createUploadVideo(vodClient, fileName);
             // 执行成功会返回VideoId、UploadAddress和UploadAuth
             String videoId = createUploadVideoResponse.getVideoId();
             JSONObject uploadAuth = JSONObject.parseObject(
@@ -175,7 +175,7 @@ public class VodUtil {
             OSSClient ossClient = initOssClient(uploadAuth, uploadAddress);
             // 上传文件，注意是同步上传会阻塞等待，耗时与文件大小和网络上行带宽有关
             uploadLocalFile(ossClient, uploadAddress, localFile);
-            System.out.println("上传视频成功, VideoId : " + videoId);// 7d6b8c07ab48456e932187080f42e88f
+            System.out.println("上传视频成功, VideoId : " + videoId); // 7d6b8c07ab48456e932187080f42e88f
 
             GetMezzanineInfoResponse response = new GetMezzanineInfoResponse();
             response = getMezzanineInfo(vodClient, videoId);

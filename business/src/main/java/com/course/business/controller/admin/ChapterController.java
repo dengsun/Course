@@ -25,7 +25,7 @@ public class ChapterController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody ChapterPageDto chapterPageDto){
+    public ResponseDto list(@RequestBody ChapterPageDto chapterPageDto) {
         ResponseDto responseDto = new ResponseDto();
         ValidatorUtil.require(chapterPageDto.getCourseId(), "课程ID");
         chapterService.list(chapterPageDto);
@@ -37,7 +37,7 @@ public class ChapterController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody ChapterDto chapterDto){
+    public ResponseDto save(@RequestBody ChapterDto chapterDto) {
         // 保存校验
         ValidatorUtil.require(chapterDto.getName(), "名称");
         ValidatorUtil.require(chapterDto.getCourseId(), "课程ID");
@@ -53,7 +53,7 @@ public class ChapterController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         chapterService.delete(id);
         return responseDto;

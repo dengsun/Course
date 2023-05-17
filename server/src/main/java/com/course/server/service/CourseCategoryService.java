@@ -26,8 +26,8 @@ public class CourseCategoryService {
     /**
      * 列表查询
      */
-    public void list(PageDto pageDto){
-        PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
+    public void list(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         CourseCategoryExample courseCategoryExample = new CourseCategoryExample();
         List<CourseCategory> courseCategoryList = courseCategoryMapper.selectByExample(courseCategoryExample);
         PageInfo<CourseCategory> pageInfo = new PageInfo<>(courseCategoryList);
@@ -39,9 +39,9 @@ public class CourseCategoryService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(CourseCategoryDto courseCategoryDto){
-        CourseCategory courseCategory = CopyUtil.copy(courseCategoryDto,CourseCategory.class);
-        if(StringUtils.isEmpty(courseCategoryDto.getId())) {
+    public void save(CourseCategoryDto courseCategoryDto) {
+        CourseCategory courseCategory = CopyUtil.copy(courseCategoryDto, CourseCategory.class);
+        if (StringUtils.isEmpty(courseCategoryDto.getId())) {
             this.insert(courseCategory);
         } else {
             this.update(courseCategory);
@@ -51,7 +51,7 @@ public class CourseCategoryService {
     /**
      * 新增
      */
-    private void insert(CourseCategory courseCategory){
+    private void insert(CourseCategory courseCategory) {
         courseCategory.setId(UuidUtil.getShortUuid());
         courseCategoryMapper.insert(courseCategory);
     }
@@ -59,14 +59,14 @@ public class CourseCategoryService {
     /**
      * 更新
      */
-    private void update(CourseCategory courseCategory){
+    private void update(CourseCategory courseCategory) {
         courseCategoryMapper.updateByPrimaryKey(courseCategory);
     }
 
     /**
      * 删除
      */
-    public void delete(String id){
+    public void delete(String id) {
         courseCategoryMapper.deleteByPrimaryKey(id);
     }
 
@@ -75,7 +75,7 @@ public class CourseCategoryService {
      * @param dtoList
      */
     @Transactional
-    public void saveBatch(String courseId, List<CategoryDto> dtoList ){
+    public void saveBatch(String courseId, List<CategoryDto> dtoList) {
         CourseCategoryExample example = new CourseCategoryExample();
         example.createCriteria().andCourseIdEqualTo(courseId);
         courseCategoryMapper.deleteByExample(example);

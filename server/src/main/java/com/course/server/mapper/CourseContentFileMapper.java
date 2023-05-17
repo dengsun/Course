@@ -2,8 +2,9 @@ package com.course.server.mapper;
 
 import com.course.server.domain.CourseContentFile;
 import com.course.server.domain.CourseContentFileExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CourseContentFileMapper {
     long countByExample(CourseContentFileExample example);

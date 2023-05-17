@@ -36,7 +36,7 @@
         <td>{{${domain}.${field.nameHump}}}</td>
             </#if>
           </#if>
-      </#list>
+        </#list>
       <td>
         <div class="hidden-sm hidden-xs btn-group">
           <button v-on:click="edit(${domain})" class="btn btn-xs btn-info">

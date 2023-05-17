@@ -28,7 +28,7 @@ public class CourseController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody CoursePageDto pageDto){
+    public ResponseDto list(@RequestBody CoursePageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         courseService.list(pageDto);
         responseDto.setContent(pageDto);
@@ -39,7 +39,7 @@ public class CourseController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody CourseDto courseDto){
+    public ResponseDto save(@RequestBody CourseDto courseDto) {
         // 保存校验
         ValidatorUtil.require(courseDto.getName(), "名称");
         ValidatorUtil.length(courseDto.getName(), "名称", 1, 50);
@@ -56,7 +56,7 @@ public class CourseController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id) {
         ResponseDto responseDto = new ResponseDto();
         courseService.delete(id);
         return responseDto;

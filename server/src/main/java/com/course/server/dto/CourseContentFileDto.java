@@ -4,12 +4,12 @@ package com.course.server.dto;
 public class CourseContentFileDto {
 
     /**
-     * id
+     * ID
      */
     private String id;
 
     /**
-     * 课程id
+     * 课程ID
      */
     private String courseId;
 
@@ -24,7 +24,7 @@ public class CourseContentFileDto {
     private String name;
 
     /**
-     * 大小|字节b
+     * 大小|字节B
      */
     private Integer size;
 
