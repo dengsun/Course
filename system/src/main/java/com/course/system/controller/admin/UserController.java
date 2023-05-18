@@ -16,7 +16,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -87,7 +86,7 @@ public class UserController {
      * 登录
      */
     @PostMapping("/login")
-    public ResponseDto login(@RequestBody UserDto userDto, HttpServletRequest request) {
+    public ResponseDto login(@RequestBody UserDto userDto) {
         LOG.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         ResponseDto responseDto = new ResponseDto();

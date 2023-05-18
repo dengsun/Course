@@ -12,7 +12,7 @@
   import BigFile from "./big-file";
   export default {
     components: {BigFile},
-    // eslint-disable-next-line vue/multi-word-component-names
+
     name: 'vod',
     props: {
       text: {
